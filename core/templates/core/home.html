@@ -2,4 +2,41 @@
 {% block title %}
 Home Page |
 {% endblock title %}
-{% block main_content %}faskdadlvdl{% endblock main_content %}
+{% block main_content %}
+<section class="container">
+    <div class="row justify-content-around text-center text-white mt-5">
+        <div class="col-sm-8 ">
+            <h3>CRUD Project in Python Django</h3>
+        </div>
+    </div>
+    <div class="row justify-content-around mt-3">
+    <div class="col-sm-8">
+        <a href="{% url 'add_contact' %}" class="btn btn-primary float-end">Add</a>
+    </div>
+    </div>
+    <div class="row justify-content-around text-white mt-1">
+        <div class="col-sm-8 ">
+            <table class="table table-hover table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Created</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for con in condata %}
+                  <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{con.name}}</td>
+                    <td>{{con.email}}</td>
+                    <td>{{con.created}}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+        </div>
+    </div>
+</section>
+{% endblock main_content %}
