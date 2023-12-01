@@ -28,3 +28,17 @@ class Delete_Contact(View):
         condata = Contact.objects.get(id=id)
         condata.delete()
         return redirect('/')
+    
+    
+class Edit_Contact(View):
+    def get(self, request, id):
+        con = Contact.objects.get(id=id)
+        fm = AddContactForm(instance=con)
+        return render(request, 'core/edit_contact.html', {'form':fm})
+    
+    def post(self,request,id):
+        con = Contact.objects.get(id=id)
+        fm = AddContactForm(request.POST, instance=con)
+        if fm.is_valid():
+            fm.save()
+            return redirect('/')

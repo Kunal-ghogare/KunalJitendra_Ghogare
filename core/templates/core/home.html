@@ -33,12 +33,21 @@ Home Page |
                     <td>{{con.name}}</td>
                     <td>{{con.email}}</td>
                     <td>{{con.created}}</td>
-                    <td>
-                        <form action = "{% url 'delete_contact' %}" method='POST'>
-                          {% csrf_token %}
-                          <input type="hidden" name="id" value={{con.id}}>
-                          <input type="submit" value="Delete" class="btn btn-danger btn-sm">
-                        </form>
+                    <td class= "aline-inline">
+                        <table>
+                          <tr>
+                              <td>
+                                <form action = "{% url 'delete_contact' %}" method='POST'>
+                                  {% csrf_token %}
+                                  <input type="hidden" name="id" value={{con.id}}>
+                                  <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                                </form> 
+                              </td>
+                              <td>
+                                <a href="{% url 'edit_contact' con.id %}" class="btn btn-info btn-sm">Edit</a>
+                              </td>
+                          </tr>
+                        </table>
                     </td>
                   </tr>
                   {% endfor %}
