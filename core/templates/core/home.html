@@ -23,6 +23,7 @@ Home Page |
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Created</th>
+                    <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,13 @@ Home Page |
                     <td>{{con.name}}</td>
                     <td>{{con.email}}</td>
                     <td>{{con.created}}</td>
+                    <td>
+                        <form action = "{% url 'delete_contact' %}" method='POST'>
+                          {% csrf_token %}
+                          <input type="hidden" name="id" value={{con.id}}>
+                          <input type="submit" value="Delete" class="btn btn-danger btn-sm">
+                        </form>
+                    </td>
                   </tr>
                   {% endfor %}
                 </tbody>
