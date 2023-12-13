@@ -1,5 +1,10 @@
 from django import forms
 from .models import Contact
+from datetime import datetime
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
 
 class AddContactForm(forms.ModelForm): 
     class Meta:
@@ -8,5 +13,5 @@ class AddContactForm(forms.ModelForm):
         widgets = {
             'name':forms.TextInput(attrs= {'class': 'form-control'}),
             'email':forms.TextInput(attrs= {'class': 'form-control'}),
-            'created':forms.TextInput(attrs= {'class': 'form-control'})
+            'created':DateInput()
         }

@@ -3,6 +3,7 @@ from django.views import View
 from .models import Contact
 from .forms import AddContactForm
 
+
 class Home(View):
     def get(self, request):
         con_data = Contact.objects.all()
